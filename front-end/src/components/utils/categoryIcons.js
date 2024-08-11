@@ -1,0 +1,15 @@
+export const categoryIcons = [
+  "House",
+  "Apple",
+  "CarTaxiFront",
+  "ShoppingCart",
+  "Ambulance",
+  "ChartLine",
+  "Candy",
+  "Fan",
+  "Earth",
+  "GraduationCap",
+  "Music",
+  "PiggyBank",
+  "Telescope",
+];
