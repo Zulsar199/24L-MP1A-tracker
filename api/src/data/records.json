@@ -1,1 +1,47 @@
-[{"amount":10000,"category_id":"94ca3b4a-44f8-462d-9057-738ef973b7a7","date":"2024-08-12","note":"","payee":"hool","time":"00:21","type":"EXP","id":"16da3758-6563-4a90-a60d-b28337a80e96"},{"type":"EXP","amount":20000,"category_id":"94ca3b4a-44f8-462d-9057-738ef973b7a7","date":"2024-08-05","time":"00:40","payee":"hool","note":"","id":"d39437e5-a0bd-4d8c-bf54-809402909570"},{"type":"EXP","amount":20000,"category_id":"94ca3b4a-44f8-462d-9057-738ef973b7a7","date":"2024-07-30","time":"00:46","payee":"hool","note":"","id":"a319faf7-0570-4e77-b9ed-173fcb5c99c7"},{"type":"INC","amount":200000,"category_id":"3fb6a2a6-1d99-4350-aa59-df6cd84e6765","date":"2024-08-06","time":"01:00","payee":"j","note":"","id":"a40d43a3-9aa8-4d20-bc24-0d641c98e3b1"},{"type":"EXP","amount":200000,"category_id":"4e735428-c7e6-4be6-8b91-11300c797418","date":"2024-07-30","time":"01:22","payee":"j","note":"","id":"0ebcce53-1dba-437c-955e-85bd9b919c09"}]
+[
+  {
+    "type": "INC",
+    "amount": 5000,
+    "category_id": "94ca3b4a-44f8-462d-9057-738ef973b7a7",
+    "payee": "h",
+    "note": "",
+    "date": "2024-08-09T19:10:00+08:00",
+    "id": "462c7780-73d0-4d39-9a22-37bc548504aa"
+  },
+  {
+    "type": "EXP",
+    "amount": 500,
+    "category_id": "a98ba4e1-ad0b-4869-bb31-fe5b751e9d60",
+    "payee": "j",
+    "note": "",
+    "date": "2023-07-13T19:11:00+08:00",
+    "id": "5efe8e29-b04e-4649-ad26-695af35e958a"
+  },
+  {
+    "type": "INC",
+    "amount": 676576,
+    "category_id": "94ca3b4a-44f8-462d-9057-738ef973b7a7",
+    "payee": "h",
+    "note": "",
+    "date": "2024-07-31T19:20:00+08:00",
+    "id": "2e220b22-a6c6-4878-bfcf-02244bd6c301"
+  },
+  {
+    "type": "EXP",
+    "amount": 5000,
+    "category_id": "4e735428-c7e6-4be6-8b91-11300c797418",
+    "payee": "hj",
+    "note": "",
+    "date": "2024-08-13T18:21:00+08:00",
+    "id": "cd648d93-0ae1-41e2-a9ef-8f5ff97a18d7"
+  },
+  {
+    "type": "INC",
+    "amount": 78777,
+    "category_id": "3fb6a2a6-1d99-4350-aa59-df6cd84e6765",
+    "payee": "h",
+    "note": "",
+    "date": "2024-08-12T18:34:00+08:00",
+    "id": "54345951-9f3b-4566-8351-2ebceb2c0cb1"
+  }
+]

@@ -1,24 +1,44 @@
 import { useEffect, useState } from "react";
-import { Checkbox } from "../ui/checkbox";
-import { Atom } from "lucide-react";
+import { Checkbox } from "../../ui/checkbox";
 import * as Icons from "lucide-react";
 import axios from "axios";
+import { format, isToday, isYesterday, isThisYear } from "date-fns";
 
 export const TransactionCheckbox = ({ record }) => {
   const formattedAmount = new Intl.NumberFormat().format(record.amount);
   const [category, setCategory] = useState({});
+
   const getCategoryById = async () => {
     const response = await axios.get(
       `http://localhost:5000/category/${record.category_id}`
     );
-    console.log(response.data, "----");
-    
+
     setCategory(response.data);
   };
+
+  const formatDate = (date) => {
+    if (isToday(date)) {
+      return format(date, "HH:mm");
+    }
+
+    if (isYesterday(date)) {
+      return format(date, "HH:mm");
+    }
+
+    if (isThisYear(date)) {
+      return format(date, "HH:mm, MMM dd");
+    }
+    return format(date, "HH:mm, MMM dd yyyy");
+  };
+
+  const result = record.date ? formatDate(record.date) : "Invalid Date";
+
   useEffect(() => {
     getCategoryById();
-  }, []);
+  }, [record.category_id]);
+
   const IconComponent = Icons[category?.img];
+
   return (
     <div className="flex items-center justify-between px-6 py-3 mb-3 bg-white rounded-xl">
       <div className="flex items-center gap-4">
@@ -26,19 +46,18 @@ export const TransactionCheckbox = ({ record }) => {
         <div
           style={{ backgroundColor: category?.color }}
           className="flex items-center justify-center w-10 h-10 text-center rounded-full "
-        > {IconComponent && <IconComponent color="white" size={20} />}
-          
+        >
+          {" "}
+          {IconComponent && <IconComponent color="white" size={20} />}
         </div>
         <div>
           <label
             htmlFor="terms"
             className="text-base font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
-            Food
+            {category.title}
           </label>
-          <p className="text-xs">
-            {record.date} {record.time}
-          </p>
+          <p className="text-xs">{result}</p>
         </div>
       </div>
       <p

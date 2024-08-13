@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -31,7 +30,7 @@ import { CategoryContext } from "../utils/context/categoryContext";
 import { recordSchema } from "../utils/validationSchema";
 import { RecordContext } from "../utils/context/recordContext";
 
-export function AddRecordDialog({text}) {
+export const AddRecordDialog = ({ text }) => {
   const [selectedValue, setSelectedValue] = useState("EXP");
   const [dialogOpen, setDialogOpen] = useState(false);
   const { allCategories } = useContext(CategoryContext);
@@ -40,6 +39,7 @@ export function AddRecordDialog({text}) {
   const {
     control,
     handleSubmit,
+    reset,
     setValue,
     formState: { errors, isSubmitting },
   } = useForm({
@@ -56,11 +56,9 @@ export function AddRecordDialog({text}) {
   });
 
   const onSubmit = (values) => {
-    console.log(values);
     createRecord(values);
-    console.log("++++");
-
     setDialogOpen(false);
+    reset()
   };
 
   const handleTypeChange = (event) => {
@@ -86,34 +84,37 @@ export function AddRecordDialog({text}) {
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
           <div className="flex *:w-1/2 h-full">
-            <div className="pr-6 h-full flex flex-col justify-between">
+            <div className="flex flex-col justify-between h-full pr-6">
               <SwitchRecordType
                 selectedValue={selectedValue}
                 handleChange={handleTypeChange}
               />
-              <div className="grid w-full max-w-sm items-center gap-1.5 border bg-[#F3F4F6] px-4 py-3 rounded-lg">
-                <Label htmlFor="amount">Amount</Label>
-                <Controller
-                  control={control}
-                  name="amount"
-                  render={({ field }) => (
-                    <Input
-                      {...field}
-                      type="number"
-                      placeholder="₮ 000.00"
-                      onChange={(e) => {
-                        field.onChange(parseFloat(e.target.value));
-                      }}
-                      className="border-none p-0 h-fit"
-                    />
-                  )}
-                />
-              </div>
-              {errors.amount && (
-                <div className="text-sm text-red-500">
-                  {errors.amount.message}
+              <div>
+                <div className="grid w-full max-w-sm items-center gap-1.5 border bg-[#F3F4F6] px-4 py-3 rounded-lg">
+                  <Label htmlFor="amount">Amount</Label>
+                  <Controller
+                    control={control}
+                    name="amount"
+                    render={({ field }) => (
+                      <Input
+                        {...field}
+                        type="number"
+                        placeholder="₮ 000.00"
+                        onChange={(e) => {
+                          field.onChange(parseFloat(e.target.value));
+                        }}
+                        className="p-0 border-none h-fit"
+                      />
+                    )}
+                  />
                 </div>
-              )}
+                {errors.amount && (
+                  <div className="text-xs text-red-500">
+                    {errors.amount.message}
+                  </div>
+                )}
+              </div>
+
               <div>
                 <Label htmlFor="category">Category</Label>
                 <Controller
@@ -151,7 +152,7 @@ export function AddRecordDialog({text}) {
                   )}
                 />
                 {errors.category_id && (
-                  <div className="text-sm text-red-500">
+                  <div className="text-xs text-red-500">
                     {errors.category_id.message}
                   </div>
                 )}
@@ -165,7 +166,7 @@ export function AddRecordDialog({text}) {
                     render={({ field }) => <Input type="date" {...field} />}
                   />
                   {errors.date && (
-                    <div className="text-sm text-red-500">
+                    <div className="text-xs text-red-500">
                       {errors.date.message}
                     </div>
                   )}
@@ -178,13 +179,12 @@ export function AddRecordDialog({text}) {
                     render={({ field }) => <Input type="time" {...field} />}
                   />
                   {errors.time && (
-                    <div className="text-sm text-red-500">
+                    <div className="text-xs text-red-500">
                       {errors.time.message}
                     </div>
                   )}
                 </div>
               </div>
-              {/* <DialogClose asChild> */}
               <Button
                 type="submit"
                 disabled={isSubmitting}
@@ -196,9 +196,8 @@ export function AddRecordDialog({text}) {
               >
                 Add record
               </Button>
-              {/* </DialogClose> */}
             </div>
-            <div className="pl-6 h-full flex flex-col justify-between">
+            <div className="flex flex-col justify-between h-full pl-6">
               <Label htmlFor="payee">Payee</Label>
               <Controller
                 control={control}
@@ -213,7 +212,7 @@ export function AddRecordDialog({text}) {
                 )}
               />
               {errors.payee && (
-                <div className="text-sm text-red-500">
+                <div className="text-xs text-red-500">
                   {errors.payee.message}
                 </div>
               )}
@@ -233,7 +232,7 @@ export function AddRecordDialog({text}) {
                 )}
               />
               {errors.note && (
-                <div className="text-sm text-red-500">
+                <div className="text-xs text-red-500">
                   {errors.note.message}
                 </div>
               )}

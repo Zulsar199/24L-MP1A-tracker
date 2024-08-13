@@ -24,27 +24,9 @@
     "id": "3fb6a2a6-1d99-4350-aa59-df6cd84e6765"
   },
   {
-     "title": "Home",
-     "img": "House",
-     "color": "blue",
-     "id": "a98ba4e1-ad0b-4869-bb31-fe5b751e8d60"
-   },
-   {
-     "title": "Food",
-     "img": "Apple",
-     "color": "red",
-     "id": "94ca3b4a-44f8-462d-9057-738ef97377a7"
-   },
-   {
-     "title": "Taxi",
-     "img": "CarTaxiFront",
-     "color": "yellow",
-     "id": "4e735428-c7e6-4be6-8b91-11300c797718"
-   },
-   {
-     "title": "Saving",
-     "img": "PiggyBank",
-     "color": "purple",
-     "id": "3fb6a2a6-1d99-4350-aa59-df6cd84e6785"
-   }
+    "title": "Test",
+    "img": "Ambulance",
+    "color": "green",
+    "id": "d5ade92f-c08d-4ad3-84e9-c9ce47fd9746"
+  }
 ]

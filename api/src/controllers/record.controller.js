@@ -40,16 +40,13 @@ export const getRecordById = async (req, res) => {
 };
 
 export const createRecord = async (req, res) => {
-  console.log(req.body, "++++");
-  
   try {
     const filePath = path.join(__dirname, "..", "data", "records.json");
     const rawData = fs.readFileSync(filePath);
     const records = JSON.parse(rawData);
 
     const newRecord = { ...req.body, id: v4() };
-    console.log(newRecord, "++++++");
-    
+
     records.push(newRecord);
 
     fs.writeFileSync(filePath, JSON.stringify(records));
