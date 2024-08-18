@@ -1,7 +1,12 @@
 "use client"
 
-export default function Home() {
+import Link from "next/link";
+
+export default function Dashboard() {
   return (
-    <div>helloo</div>
+    <div>
+      <p>helloo page</p>
+      <Link href="record">record</Link>
+    </div>
   );
 }

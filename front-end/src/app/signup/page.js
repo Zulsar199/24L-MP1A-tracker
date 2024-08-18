@@ -18,7 +18,7 @@ export default function Home() {
   //    };
   const createUser = async () => {
     const response = await axios.post("http://localhost:5000/user", newUser);
-    console.log(newUser);
+    // console.log(newUser);
     getUsers();
   };
 
